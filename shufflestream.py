@@ -4,7 +4,7 @@ import random
 
 # These are the variables that you can change without breaking anything.
 divide_constant = 1200 * 30     # Size of chunks. Must be larger than shuffle_constant and less than number of pixels in the image.
-shuffle_constant = 200 * 40     # Size of sub chunks. Smallest value be larger than pattern_a's largest value.
+shuffle_constant = 200 * 40     # Size of sub chunks. Must be larger than pattern_a's largest value.
 pattern_a = [64, 80, 200]       # Size of sub sub chunks. Smallest value must be larger than pattern_b's largest value.
 pattern_b = [4, 8, 12, 16]      # Size of sub sub sub chunks. Largest value must be smaller than pattern_a's largest value.
 pattern_b_rule = [3, 2, 0, 1]   # Permutation order. Do NOT change values, only their order.
@@ -58,7 +58,7 @@ def permutate_pattern(p, r):
 rules = [divide(divide_constant),                          # Divides stream into chunks
          shuffle(shuffle_constant),                        # Divides chunks into sub chunks and shuffles
          shuffle_pattern(pattern_a),                       # Divides sub chunks according to pattern and shuffles
-         permutate_pattern(pattern_b, pattern_b_rule)]   # Divides sub sub chunks according to pattern and permutates
+         permutate_pattern(pattern_b, pattern_b_rule)]     # Divides sub sub chunks according to pattern and permutates
 
 
 def process_rules(pix, depth):
